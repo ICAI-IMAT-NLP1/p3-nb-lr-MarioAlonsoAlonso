@@ -27,6 +27,7 @@ def test_estimate_conditional_probabilities():
 
     # When
     cond_probs = model.conditional_probabilities
+    #cond_probs = model.estimate_conditional_probabilities(features, labels, delta=1)
 
     # Then
     assert isinstance(cond_probs, dict)
@@ -34,8 +35,6 @@ def test_estimate_conditional_probabilities():
     assert torch.allclose(cond_probs[0], torch.tensor([2 / 5, 2 / 5, 1 / 5], dtype=torch.float32))
     assert torch.allclose(cond_probs[1], torch.tensor([1 / 5, 2 / 5, 2 / 5], dtype=torch.float32))
     
-
-
 
 @pytest.mark.order(6)
 def test_predict_naive_bayes():
